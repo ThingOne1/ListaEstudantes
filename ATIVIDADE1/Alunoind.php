@@ -8,8 +8,8 @@
  $_SESSION['id_escola'] = $id_escola;
  Alunos($id_escola,$id_ano,$id_turma);
 
- function Alunos($id_escola,$id_ano,$id_turma) {
-
+ function Alunos($id_escola,$id_ano,$id_turma)
+          {
            include 'connection.php';
            $query = "select a.ed47_i_codigo,
            a.ed47_v_nome,
@@ -42,7 +42,8 @@
 
            $result = pg_query($conn,$query);
 
-           if (pg_num_rows($result)>0) {
+           if (pg_num_rows($result)>0)
+              {
                  $response="";
                  $response="
                   <div class='pb-5 container'>
@@ -61,17 +62,18 @@
                   <td></td>
                   </tr>";
 
-                 while($rows=pg_fetch_assoc($result)){
-                     $response.="
-                       <tr id=".$rows['ed47_i_codigo'].">
-                       <td>".iconv('ISO-8859-1','UTF-8', $rows['ed47_v_nome'])."</td>
-                       <td>".$rows['ed60_c_situacao']."</td>
-                       <td>".$rows['ed57_c_descr']."</td>
-                       <td>".$rows['ed18_c_nome']."</td>
-                       <td>".$rows['ed52_c_descr']."</td>
-                       <td><button class='btn btn-primary' onclick=Edit(this) type='button' name='button'>Edit</button></td>
-                       </tr>";
-                 }
+                 while($rows=pg_fetch_assoc($result))
+                    {
+                       $response.="
+                         <tr id=".$rows['ed47_i_codigo'].">
+                         <td>".iconv('ISO-8859-1','UTF-8', $rows['ed47_v_nome'])."</td>
+                         <td>".$rows['ed60_c_situacao']."</td>
+                         <td>".$rows['ed57_c_descr']."</td>
+                         <td>".$rows['ed18_c_nome']."</td>
+                         <td>".$rows['ed52_c_descr']."</td>
+                         <td><button class='btn btn-primary' onclick=Edit(this) type='button' name='button'>Edit</button></td>
+                         </tr>";
+                    }
                  $response.="</table>
                  <a href='downloadExcel.php'><button class='btn btn-primary' type='button' id='geraExcel' name='button'>Download Excel</button></a>
                  <a href='downloadPDF.php'><button class='btn btn-primary' type='button' id='geraExcel' name='button'>Download PDF</button></a>
@@ -82,6 +84,6 @@
                  </div>";
 
             }
-            echo $response;
+              echo $response;
           }
   ?>

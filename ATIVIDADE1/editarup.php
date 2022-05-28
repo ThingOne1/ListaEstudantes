@@ -1,10 +1,10 @@
 <?php
-$id_escola = $_REQUEST['id_escola'];
-$id_ano = $_REQUEST['id_calendario'];
-$id_turma = $_REQUEST['id_turma'];
-$id_edit = $_REQUEST['id_edit'];
-// var_dump($_REQUEST['id_edit']);
-// die(); // <<<< ta vindo uma string vazia olhar isso!!
+session_start();
+$id_turma = $_SESSION['id_turma'];
+$id_ano = $_SESSION['id_ano'];
+$id_escola = $_SESSION['id_escola'];
+$id_edit = $_SESSION['$id_edit'];
+
 Editar($id_escola,$id_ano,$id_turma,$id_edit);
 function Editar($id_escola,$id_ano,$id_turma,$id_edit) {
     include 'connection.php';
@@ -41,15 +41,15 @@ function Editar($id_escola,$id_ano,$id_turma,$id_edit) {
       $response="";
       while($rows=pg_fetch_assoc($result)){
           $response.="
-          <label for='name'><h6>Nome do Aluno</h6></label>
-          <input type='text' class='form-control mb-2 m-auto' placeholder='Nome aluno' name='name' value='".iconv('ISO-8859-1','UTF-8', $rows['ed47_v_nome'])."'>
-          <label for='name'><h6>Turma</h6></label>
-          <input type='text'class='form-control mb-2 m-auto' placeholder='Turma' name='turma' value='".$rows['ed57_c_descr']."'>
-          <label for='name'><h6>Nome da escola</h6></label>
-          <input type='text' class='form-control mb-2 m-auto' placeholder='Nome da escola' name='idade' value='".$rows['ed18_c_nome']."'>
-          <label for='name'><h6>Data da matricula</h6></label>
-          <input type='text' class='form-control mb-2 m-auto' placeholder=' Data da matricula ' name='cidade' value='".$rows['ed52_c_descr']."'>
-          <button onclick='' class='update' name='update'>Update</button>";
+          <label for='name'><h6 class='text-white'>Nome do Aluno</h6></label>
+          <input type='text' class='form-control mb-2 mx-auto' placeholder='Nome aluno' name='name' value='".iconv('ISO-8859-1','UTF-8', $rows['ed47_v_nome'])."'>
+          <label for='name'><h6 class='text-white' >Turma</h6></label>
+          <input type='text'class='form-control mb-2 mx-auto' placeholder='Turma' name='turma' value='".$rows['ed57_c_descr']."'>
+          <label for='name'><h6 class='text-white' >Nome da escola</h6></label>
+          <input type='text' class='form-control mb-2 mx-auto' placeholder='Nome da escola' name='idade' value='".$rows['ed18_c_nome']."'>
+          <label for='name'><h6 class='text-white' >Data da matricula</h6></label>
+          <input type='text' class='form-control mb-2 mx-auto' placeholder=' Data da matricula ' name='cidade' value='".$rows['ed52_c_descr']."'>
+          <button onclick='' class='btn btn-secondary' name='update'>Update</button>";
       }
       echo $response;
     }

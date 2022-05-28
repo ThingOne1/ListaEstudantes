@@ -1,5 +1,5 @@
 <?php
-
+// Coleta a data do curso
 $id_escola=$_REQUEST['id'];
 Calendario($id_escola);
 

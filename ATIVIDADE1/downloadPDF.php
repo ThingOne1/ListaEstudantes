@@ -1,4 +1,5 @@
 <?php
+//achar outra maneira, acredito que mpdf
  session_start();
  $id_turma = $_SESSION['id_turma'];
  $id_ano = $_SESSION['id_ano'];
@@ -63,11 +64,11 @@
 
 
             }
-
+            // Configurações header para forçar o download
             // Definimos o nome do arquivo que será exportado
             $arquivo = "ListaOficial.pdf";
-            // Configurações header para forçar o download
-            // Determina que o arquivo é uma planilha do Excel
+
+            // Determina que o arquivo é um pdf
            header("Content-type:application/pdf");
 
            // Força o download do arquivo

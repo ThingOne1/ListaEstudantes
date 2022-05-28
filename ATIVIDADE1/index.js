@@ -69,9 +69,10 @@ function Turmas(value) {
     }
     xhttp.send();
   }
+
   function Update() {
     const xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "editarup.php?id_escola=" + nomeEscola +"&id_calendario=" + calendarioEscola + "&id_turma=" + TurmasEscola + "&id_edit=" + edit );
+    xhttp.open("POST", "editarup.php?");
     xhttp.onload = function() {
       let resposta = xhttp.responseText;
       let selectAlunos=document.getElementById('Update');

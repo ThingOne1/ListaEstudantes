@@ -1,11 +1,16 @@
 <?php
+session_start();
 $id_escola = $_REQUEST['id_escola'];
 $id_ano = $_REQUEST['id_calendario'];
 $id_turma = $_REQUEST['id_turma'];
 $id_edit = $_REQUEST['id_edit'];
-// var_dump($_REQUEST['id_edit']);
-// die(); // <<<< ta vindo uma string vazia olhar isso!!
+$_SESSION['id_turma'] = $id_turma;
+$_SESSION['id_ano'] = $id_ano;
+$_SESSION['id_escola'] = $id_escola;
+$_SESSION['$id_edit'] = $id_edit;
+
 Editar($id_escola,$id_ano,$id_turma,$id_edit);
+
 function Editar($id_escola,$id_ano,$id_turma,$id_edit) {
     include 'connection.php';
     $query = "select a.ed47_i_codigo,
