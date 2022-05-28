@@ -1,0 +1,163 @@
+host: 192.168.150.240
+port: 5432
+user: ecidade
+senha: 3c1d@d3@2020$09
+
+
+-----SELECT TODAS AS ESCOLAS------------
+
+select
+	distinct ed18_i_codigo,
+	ed18_c_nome
+from
+	alunocurso
+inner join escola on
+	escola.ed18_i_codigo = alunocurso.ed56_i_escola
+inner join aluno on
+	aluno.ed47_i_codigo = alunocurso.ed56_i_aluno
+inner join calendario on
+	calendario.ed52_i_codigo = alunocurso.ed56_i_calendario
+inner join base on
+	base.ed31_i_codigo = alunocurso.ed56_i_base
+inner join cursoedu on
+	cursoedu.ed29_i_codigo = base.ed31_i_curso
+left join alunopossib on
+	alunopossib.ed79_i_alunocurso = alunocurso.ed56_i_codigo
+left join serie on
+	serie.ed11_i_codigo = alunopossib.ed79_i_serie
+left join turno on
+	turno.ed15_i_codigo = alunopossib.ed79_i_turno
+order by
+	ed18_c_nome
+
+-----SELECT TODOS OS CALENDARIOS------------
+
+select
+	c.ed38_i_codigo,
+	c2.ed52_c_descr
+from
+	escola.calendarioescola c
+inner join escola.escola e on
+	e.ed18_i_codigo = c.ed38_i_escola
+inner join escola.calendario c2 on
+	c2.ed52_i_codigo = c.ed38_i_calendario
+where
+	c.ed38_i_escola = 42
+order by
+	c.ed38_i_codigo 
+	
+
+-----SELECT TODAS OS CURSOS------------
+select
+	distinct ed29_i_codigo, ed29_i_ensino,
+	ed29_c_descr
+from
+	cursoescola
+inner join escola on
+	escola.ed18_i_codigo = cursoescola.ed71_i_escola
+inner join cursoedu on
+	cursoedu.ed29_i_codigo = cursoescola.ed71_i_curso
+inner join bairro on
+	bairro.j13_codi = escola.ed18_i_bairro
+inner join ruas on
+	ruas.j14_codigo = escola.ed18_i_rua
+inner join db_depart on
+	db_depart.coddepto = escola.ed18_i_codigo
+inner join ensino on
+	ensino.ed10_i_codigo = cursoedu.ed29_i_ensino
+where
+	ed71_i_escola = 42
+order by
+	ed29_c_descr
+
+
+-----SELECT TODAS AS ETAPAS------------
+select
+	distinct ed11_i_codigo,
+	ed11_c_descr
+from
+	serie s,
+	serieregimemat sr,
+	turmaserieregimemat tr,
+	turma t
+where
+	s.ed11_i_codigo = sr.ed223_i_serie
+	and sr.ed223_i_codigo = tr.ed220_i_serieregimemat
+	and tr.ed220_i_turma = ed57_i_codigo
+	and t.ed57_i_calendario = 315
+	
+-----SELECT TODAS AS TURMAS------------
+	
+	select
+	ed57_i_codigo,
+	ed57_c_descr
+from
+	turma
+inner join escola on
+	escola.ed18_i_codigo = turma.ed57_i_escola
+inner join turno on
+	turno.ed15_i_codigo = turma.ed57_i_turno
+inner join sala on
+	sala.ed16_i_codigo = turma.ed57_i_sala
+inner join calendario on
+	calendario.ed52_i_codigo = turma.ed57_i_calendario
+inner join base on
+	base.ed31_i_codigo = turma.ed57_i_base
+inner join regimemat on
+	regimemat.ed218_i_codigo = base.ed31_i_regimemat
+inner join bairro on
+	bairro.j13_codi = escola.ed18_i_bairro
+inner join ruas on
+	ruas.j14_codigo = escola.ed18_i_rua
+inner join db_depart on
+	db_depart.coddepto = escola.ed18_i_codigo
+inner join tiposala on
+	tiposala.ed14_i_codigo = sala.ed16_i_tiposala
+inner join duracaocal on
+	duracaocal.ed55_i_codigo = calendario.ed52_i_duracaocal
+inner join cursoedu on
+	cursoedu.ed29_i_codigo = base.ed31_i_curso
+inner join ensino on
+	ensino.ed10_i_codigo = cursoedu.ed29_i_ensino
+inner join tipoensino on
+	tipoensino.ed36_i_codigo = ensino.ed10_i_tipoensino
+left join censocursoprofiss on
+	censocursoprofiss.ed247_i_codigo = turma.ed57_i_censocursoprofiss
+inner join turmacensoetapa on
+	turmacensoetapa.ed132_turma = turma.ed57_i_codigo
+where
+	ed57_i_escola = 42
+	and ed31_i_curso = 6
+	and ed132_ano = 2021
+order by
+	ed57_c_descr
+	
+-----SELECT TODAS OS ALUNOS------------	
+	select a.ed47_i_codigo,
+a.ed47_v_nome,
+m.ed60_c_situacao,
+t.ed57_c_descr,
+e.ed18_c_nome,
+c.ed52_c_descr
+from
+escola.matricula m
+inner join escola.turma t on
+m.ed60_i_turma = t.ed57_i_codigo
+inner join escola.escola e on
+t.ed57_i_escola = e.ed18_i_codigo
+inner join escola.base b on
+b.ed31_i_codigo = t.ed57_i_base
+inner join escola.cursoedu c2 on
+c2.ed29_i_codigo = b.ed31_i_curso
+inner join escola.aluno a on
+m.ed60_i_aluno = a.ed47_i_codigo
+inner join escola.calendario c on
+t.ed57_i_calendario = c.ed52_i_codigo
+where
+c.ed52_i_ano = 2021
+and m.ed60_c_situacao = 'MATRICULADO'
+and e.ed18_i_codigo = 42
+and c2.ed29_i_codigo = 6
+and t.ed57_i_codigo = 3873
+order by
+to_ascii(ed47_v_nome)
