@@ -18,10 +18,11 @@ require_once('Nome_Escola.php');
   <!-- CSS only -->
   <link rel="stylesheet" href="css\stylecss.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <!-- Title -->
   <title>Atividade Ricardo</title>
 </head>
-<!-- Image and text -->
 
+<!-- Image and title -->
 <body class="container-flex text-center bg-dark">
   <div class="pt-5">
     <div class=" pt-5">
@@ -32,6 +33,7 @@ require_once('Nome_Escola.php');
       <br>
     </div>
   </div>
+  <!-- fim de Image and title -->
   <div class="container-flex">
 
     <label class="pb-2 text-white " for='nome_escola'> <h5>Nome do curso</h5> </label>
@@ -75,7 +77,6 @@ require_once('Nome_Escola.php');
     <br>
     <br>
     <!-- Lista de alunos -->
-
       <div id="Alunos"  class="pb-4 container">
 
       </div>

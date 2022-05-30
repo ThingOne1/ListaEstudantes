@@ -80,6 +80,7 @@ function Editar($id_escola,$id_ano,$id_turma,$id_edit) {
       </div>
       </div>
       </div>";
+      
       echo $response;
     }
   }

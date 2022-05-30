@@ -1,4 +1,5 @@
 <?php
+
 function pegar_nomeescola()
       {
        include 'connection.php';
@@ -32,6 +33,7 @@ function pegar_nomeescola()
         while($rows=pg_fetch_assoc($result)){
               $response.="<option value=$rows[ed18_i_codigo]>".iconv("ISO-8859-1","UTF-8", $rows["ed18_c_nome"])."</option>";
               }
+
         echo $response;
         }
       }

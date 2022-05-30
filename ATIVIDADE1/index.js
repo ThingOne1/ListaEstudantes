@@ -1,14 +1,14 @@
 
-// function Escola() {
-//   const xhttp = new XMLHttpRequest();
-//   xhttp.open("GET, Nome_Escola.php");
-//   xhttp.onload = function() {
-//     let resposta = xhttp.responseText;
-//     let selectCalendario=document.getElementById("nome_escola");
-//     selectCalendario.innerHTML=resposta;
-//   }
-//   xhttp.send();
-// }
+function Escola() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("POST, Nome_Escola.php");
+  xhttp.onload = function() {
+    let resposta = xhttp.responseText;
+    let selectCalendario=document.getElementById("nome_escola");
+    selectCalendario.innerHTML=resposta;
+  }
+  xhttp.send();
+}
 
   function Calendario(value) {
     window.nomeEscola = value;
