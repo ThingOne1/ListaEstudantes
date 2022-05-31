@@ -62,7 +62,7 @@ function Edit(value) {
     let tr = elmento.closest('tr');
     window.edit = tr.id;
     const xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "editar.php?id_escola=" + nomeEscola + "&id_calendario=" + calendarioEscola + "&id_turma=" + TurmasEscola + "&id_edit=" + edit);
+    xhttp.open("POST", "app/controller/editar.php?id_escola=" + nomeEscola + "&id_calendario=" + calendarioEscola + "&id_turma=" + TurmasEscola + "&id_edit=" + edit);
     xhttp.onload = function() {
         let resposta = xhttp.responseText;
         let selectAlunos = document.getElementById('Alunos');
