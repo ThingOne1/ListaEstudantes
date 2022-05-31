@@ -6,8 +6,6 @@ class Turmas{
 
 
 public function BuscarTurmas($id_escola, $id_etapa,$id_ano,$conn){
-
-      $conn=$conn->conn();
       $query =  $query = "select
       distinct ed18_c_nome,
       ed57_i_codigo,

@@ -73,7 +73,7 @@ function Edit(value) {
 
 function Update() {
     const xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "editarup.php?");
+    xhttp.open("POST", "app/controller/update.php");
     xhttp.onload = function() {
         let resposta = xhttp.responseText;
         let selectAlunos = document.getElementById('Update');

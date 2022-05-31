@@ -4,7 +4,7 @@ namespace App\model;
 class Calendario{
 
 public function Buscardata($id_escola,$conn){
-      // $conn=$conn->conn();
+      
       $query = "select
           c2.ed52_i_ano,
           c2.ed52_c_descr
