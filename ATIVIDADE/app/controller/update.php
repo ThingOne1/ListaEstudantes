@@ -3,10 +3,7 @@ namespace App\controller;
 include_once('../../vendor/autoload.php');
 
 use App\model\update;
-use App\model\connection;
 
-$conn = new connection();
-$conn=$conn->conn();
 $update = new update();
 
 session_start();
@@ -15,7 +12,7 @@ $id_ano = $_SESSION['id_ano'];
 $id_escola = $_SESSION['id_escola'];
 $id_edit = $_SESSION['id_edit'];
 
-$result = $update->Editar($id_escola,$id_ano,$id_turma,$id_edit,$conn);
+$result = $update->Editar($id_escola,$id_ano,$id_turma,$id_edit);
 
 Editar($result);
 function Editar($result) {

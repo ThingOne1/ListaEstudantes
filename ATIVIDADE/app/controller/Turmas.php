@@ -3,16 +3,15 @@ namespace App\controller;
 include_once('../../vendor/autoload.php');
 
 use App\model\Turmas;
-use App\model\connection;
 
-$conn = new connection();
+
 $Turmas = new Turmas();
 
 $id_escola = $_REQUEST['id_escola'];
 $id_etapa = $_REQUEST['id_etapa'];
 $id_ano = $_REQUEST['id_calendario'];
 
-$result = $Turmas->buscarTurmas($id_escola, $id_etapa,$id_ano,$conn);
+$result = $Turmas->buscarTurmas($id_escola, $id_etapa,$id_ano);
 
 Turmas($result);
 

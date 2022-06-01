@@ -1,0 +1,78 @@
+<!-- Image and title -->
+
+<body class="container-flex text-center bg-dark">
+    <div class="pt-4">
+        <div class=" pt-5">
+            <h1 class="text-white pt-4">Lista de Alunos
+                <a class="navbar-brand" href="index.php">
+                    <img src="img\JCL.png" width="30" height="30" class="position-absolute pl-5" alt="">
+                </a>
+            </h1>
+            <br>
+            <br>
+        </div>
+    </div>
+    
+    <!-- fim de Image and title -->
+
+    <div class="container-flex">
+
+        <label class="pb-2 text-white " for='nome_escola'> <h5>Nome da Escola</h5> </label>
+
+        <br>
+        <select class="text-center" style="border-radius: 10px" id="nome_escola" onchange="Calendario(this.value)">
+
+    </select>
+        <br>
+        <br>
+
+        <label class="pb-2 text-white " for="calendario"><h5>Data do curso</h5></label>
+
+        <br>
+        <select class="text-center" style="border-radius: 10px" id="calendario" name="calendario" onchange="Etapas(this.value)">
+      <option value="00">---------------</option>
+    </select>
+        <br>
+        <br>
+
+        <label class="pb-2 text-white " for="Etapas"><h5>Serie do aluno</h5></label>
+
+        <br>
+        <select class="text-center" id='Etapas' name="Etapas" style="border-radius: 10px" onchange=Turmas(this.value)>
+      <option value="00">---------------</option>
+    </select>
+        </select>
+
+        <br>
+        <br>
+
+        <label class="pb-2 text-white " for="Turmas"><h5>Turmas do curso</h5></label>
+
+        <br>
+        <select class="text-center" id='Turmas' style="border-radius: 10px" name="Turmas" onchange=Alunos(this.value)>
+      <option value="00">---------------</option>
+    </select>
+    </div>
+    <br>
+    <br>
+    <br>
+    <script type="text/javascript">
+        Escolas();
+    </script>
+    <!-- Lista de alunos -->
+    <div id="Alunos" class="pb-4 container">
+
+    </div>
+    <!-- termido de lista de alunos -->
+
+    <!-- lISTA DE UPDADE -->
+    <br>
+    <div class="container pb-5 w-25">
+
+        <form id="Update" class="text-center">
+
+        </form>
+
+    </div>
+    <!-- termino lISTA DE UPDADE -->
+</body>

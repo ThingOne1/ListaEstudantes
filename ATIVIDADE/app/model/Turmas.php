@@ -2,11 +2,12 @@
 namespace App\model;
 
 
-class Turmas{
+class Turmas extends connection{
 
 
-public function BuscarTurmas($id_escola, $id_etapa,$id_ano,$conn){
-      $query =  $query = "select
+public function BuscarTurmas($id_escola, $id_etapa,$id_ano){
+  $conexao=$this->conexao;    
+  $query = "select
       distinct ed18_c_nome,
       ed57_i_codigo,
       ed57_c_descr
@@ -35,7 +36,7 @@ public function BuscarTurmas($id_escola, $id_etapa,$id_ano,$conn){
       and ed223_i_serie = "."$id_etapa"."
       and ed18_i_codigo= "."$id_escola";;
 
-      $result = pg_query($conn,$query);
+      $result = pg_query($conexao,$query);
       
       return $result;
 }

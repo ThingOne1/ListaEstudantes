@@ -3,17 +3,14 @@ namespace App\controller;
 include_once('../../vendor/autoload.php');
 
 use App\model\Calendario;
-use App\model\connection;
+
+$Calendario = new Calendario();
 
 session_start();
 $id_escola=$_REQUEST['id'];
 $_SESSION['id_escola'] = $id_escola;
 
-$conn = new connection();
-$conn=$conn->conn();
-$Calendario = new Calendario();
-
-$result = $Calendario->Buscardata($id_escola,$conn);
+$result = $Calendario->Buscardata($id_escola);
 
 Calendario($result);
 

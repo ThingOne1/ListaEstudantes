@@ -1,10 +1,12 @@
 <?php
 namespace App\model;
 
-class Escolas{
-
-public function BuscarEscolas($conn){ 
-      
+class Escolas extends connection
+{
+  
+public function BuscarEscolas(){ 
+  
+      $conexao=$this->conexao;
       $query = "select
         distinct ed18_i_codigo,
         ed18_c_nome
@@ -29,7 +31,7 @@ public function BuscarEscolas($conn){
     order by
         ed18_c_nome";
 
-      $result = pg_query($conn,$query);
+      $result = pg_query($conexao,$query);
       
       return $result;
 }

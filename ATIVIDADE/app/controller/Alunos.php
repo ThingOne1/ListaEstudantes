@@ -3,13 +3,10 @@ namespace App\controller;
 include_once('../../vendor/autoload.php');
 
 use App\model\alunomodel;
-use App\model\connection;
+
+$alunomodel = new alunomodel();
 
 session_start();
-
-$conn = new connection();
-$conn=$conn->conn();
-$alunomodel = new alunomodel();
 
 $id_escola = $_REQUEST['id_escola'];
 $id_ano = $_REQUEST['id_calendario'];
@@ -19,7 +16,7 @@ $_SESSION['id_turma'] = $id_turma;
 $_SESSION['id_ano'] = $id_ano;
 $_SESSION['id_escola'] = $id_escola;
 
-$result = $alunomodel->buscarAluno($id_ano, $id_escola, $id_turma, $conn);
+$result = $alunomodel->buscarAluno($id_ano, $id_escola, $id_turma);
 
 Alunos($result);
 

@@ -3,13 +3,10 @@ namespace App\controller;
 include_once('../../vendor/autoload.php');
 
 use App\model\Escolas;
-use App\model\connection;
 
-$conn = new connection();
-$conn=$conn->conn();
+
 $Escolas = new Escolas();
-
-$result = $Escolas->BuscarEscolas($conn);
+$result = $Escolas->BuscarEscolas();
 
 pegar_nomeescola($result);
 function pegar_nomeescola($result)

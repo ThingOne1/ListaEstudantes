@@ -1,10 +1,11 @@
 <?php
 namespace App\model;
 
-class alunomodel{
+class alunomodel extends connection{
 
-public function buscarAluno($id_ano,$id_escola,$id_turma,$conn){
-     
+public function buscarAluno($id_ano,$id_escola,$id_turma)
+{
+      $conexao=$this->conexao;
       $query = "select a.ed47_i_codigo,
       a.ed47_v_nome,
       m.ed60_c_situacao,
@@ -32,7 +33,7 @@ public function buscarAluno($id_ano,$id_escola,$id_turma,$conn){
       and t.ed57_i_codigo = "."$id_turma"."
       order by
       to_ascii(ed47_v_nome)";
-      $result = pg_query($conn,$query);
+      $result = pg_query($conexao,$query);
       return $result;
 }
 

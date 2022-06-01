@@ -3,16 +3,13 @@ namespace App\controller;
 include_once('../../vendor/autoload.php');
 
 use App\model\Etapas;
-use App\model\connection;
+
+$Etapas = new Etapas();
 
 session_start();
 $id_escola = $_SESSION['id_escola'];
 
-$conn = new connection();
-$conn=$conn->conn();
-$Etapas = new Etapas();
-
-$result = $Etapas->BuscarEtapas($id_escola,$conn);
+$result = $Etapas->BuscarEtapas($id_escola);
 
 Etapas($result);
 function Etapas($result)

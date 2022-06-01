@@ -1,10 +1,11 @@
 <?php
 namespace App\model;
 
-class Calendario{
+class Calendario extends connection {
 
-public function Buscardata($id_escola,$conn){
-      
+public function Buscardata($id_escola){
+  
+      $conexao=$this->conexao;
       $query = "select
           c2.ed52_i_ano,
           c2.ed52_c_descr
@@ -19,7 +20,7 @@ public function Buscardata($id_escola,$conn){
         order by
           c2.ed52_i_ano";
 
-      $result = pg_query($conn,$query);
+      $result = pg_query($conexao,$query);
       
       return $result;
 }

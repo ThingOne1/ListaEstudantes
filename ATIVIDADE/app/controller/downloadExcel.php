@@ -3,18 +3,16 @@ namespace App\controller;
 include_once('../../vendor/autoload.php');
 
 use App\model\downloadExcel;
-use App\model\connection;
+
+$Excel = new downloadExcel();
 
  session_start();
  $id_turma = $_SESSION['id_turma'];
  $id_ano = $_SESSION['id_ano'];
  $id_escola = $_SESSION['id_escola'];
 
- $conn = new connection();
- $conn=$conn->conn();
- $Excel = new downloadExcel();
 
- $result = $Excel->buscarAluno($id_ano, $id_escola, $id_turma, $conn);
+ $result = $Excel->buscarAluno($id_ano, $id_escola, $id_turma);
  
  Download($result);
 

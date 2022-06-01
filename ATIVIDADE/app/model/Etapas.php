@@ -1,10 +1,10 @@
 <?php
 namespace App\model;
 
-class Etapas{
+class Etapas extends connection{
 
-public function BuscarEtapas($id_escola,$conn){
-      
+public function BuscarEtapas($id_escola){
+      $conexao=$this->conexao;
       $query = "select
       distinct ed11_i_codigo,
       ed11_c_descr
@@ -21,7 +21,7 @@ public function BuscarEtapas($id_escola,$conn){
       and t.ed57_i_escola = e.ed18_i_codigo
       and ed18_i_codigo= "."$id_escola";;
 
-      $result = pg_query($conn,$query);
+      $result = pg_query($conexao,$query);
       
       return $result;
 }

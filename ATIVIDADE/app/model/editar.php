@@ -1,11 +1,11 @@
 <?php
 namespace App\model;
 
-class editar
+class editar extends connection
 {
   
-function Editar($id_escola,$id_ano,$id_turma,$id_edit,$conn) {
-    
+function Editar($id_escola,$id_ano,$id_turma,$id_edit) {
+    $conexao=$this->conexao;
     $query = "select a.ed47_i_codigo,
     a.ed47_v_nome,
     m.ed60_c_situacao,
@@ -35,7 +35,7 @@ function Editar($id_escola,$id_ano,$id_turma,$id_edit,$conn) {
     order by
     to_ascii(ed47_v_nome)";
 
-    $result = pg_query($conn,$query);
+    $result = pg_query($conexao,$query);
     
     return $result;
     }
